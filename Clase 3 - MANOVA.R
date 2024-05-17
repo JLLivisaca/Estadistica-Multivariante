@@ -41,7 +41,7 @@ library(stats) # No necesita instalar esta librería ya que esta instalada por d
 ### MANOVA
 # Se requiere probar las cuatro variables ancho y largo de sépalo y pétalo  son diferentes en las diferentes especies. 
 # Las variables dependientes son: Sepal.Length, Sepal.Width, Petal.Length, Petal.Width
-# Las variables independientes son: edl tipo de especie de flor.
+# Las variables independientes son: el tipo de especie de flor.
 
 manova_result <- manova(cbind(Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) ~ Species, data = iris)
 
