@@ -25,7 +25,7 @@ which(outliers_euclidean)
 # Crear gráfico de dispersión
 ggplot(mtcars, aes(x = mpg, y = hp, color = outliers_euclidean)) +
   geom_point() +
-  labs(title = "Outliers usando la distancia de Euclideana",
+  labs(title = "Outliers usando la distancia Euclideana",
        x = "Millas por galón (mpg)",
        y = "Caballos de fuerza (hp)")
 
