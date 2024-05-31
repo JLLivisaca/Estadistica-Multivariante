@@ -26,7 +26,7 @@ library(car)
 library(simstudy)
 library(data.table)
 library(tidyverse)
-
+library(lubridate)
 ####Cargar datos ####
 data <- read_csv("GitHub/estadistica-inferencia/Modelos_Multivariantes/Estad-stica-Multivariante/Datos-supermercado.csv")
 # Convertir la columna InvoiceDate a formato fecha
@@ -128,7 +128,7 @@ set.seed(123)
 factoextra::fviz_nbclust(df_RFM2, kmeans, method = "silhouette")
 fviz_nbclust(df_RFM2, FUN = hcut, method = "wss") #elbow method
 #kmeans
-res <- kmeans(df_RFM2, 3, nstart = 25)
+res <- kmeans(df_RFM2, 2, nstart = 25)
 factoextra::fviz_cluster(res, data = df_RFM2,
                          geom = "point",
                          ellipse.type = "convex", 
@@ -169,7 +169,7 @@ data_long %>%
   ggplot2::theme(text = ggplot2::element_text(family = 'serif')) + 
   ggplot2::facet_grid(var ~ ., scales = 'free')
 
-k=kmeans(df_RFM[,-1],centers = 3, iter.max = 100 )
+k=kmeans(df_RFM2[,-1],centers = 3, iter.max = 100 )
 #los centroides
 k$centers
 table(k$cluster) # cuántas personas son parte de los segmentos
@@ -220,7 +220,7 @@ km_clusters$silinfo$widths %>% filter(sil_width <= 0)
 # se puede notar que en el cluster 2 hay una medida mal clasficada, cluster 2 y 3 hay una
 # Duun indice
 library(fpc)
-calidad.kmean <- scale(df_RFM[,-1])
+calidad.kmean <- scale(df_RFM2[,-1])
 # K-means clustering con k = 3
 set.seed(321)
 km_clusters <- kmeans(x = dist(calidad.kmean, method = "euclidean"), centers = 3,
